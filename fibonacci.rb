@@ -12,4 +12,8 @@ def fibs(num, counter = 2)
   arr
 end
 
-p fibs(8)
+def fibs_rec(num, hash = { 1 => [0], 2 => [0, 1] })
+  return hash[num] if hash.key?(num)
+
+  hash[num] = ([fibs_rec(num - 1, hash).last + fibs_rec(num - 2, hash).last] + hash[num - 1]).sort
+end
